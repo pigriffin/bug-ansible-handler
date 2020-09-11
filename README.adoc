@@ -1,6 +1,6 @@
 = bug-iansible-handler
 
-If a handler is called through a chain of roles, the handler is skipped if the first task 
+If a handler is called through a chain of roles, the handler is skipped if the first path that results in the handler being called has a false 'when:' clause.
 
 - site.yml calls role-a
 - role-a has two metas calling role-b. One has a 'when: 1 == 2' clause that is always false, the second has no 'when'
@@ -9,5 +9,5 @@ If a handler is called through a chain of roles, the handler is skipped if the f
 If the first dependency in role-a has the false 'when' clause, the handler is skipped and launches the debugger. From the debugger 'task.when' shows `['1 == 2']`.
 If the 'when' clause is moved to the second dependency in role-a,, the handler is called normally.
 
-So it seems for some reason any 'when:' clause in the first dependency is copied into the handler.
+So it seems for some reason any 'when:' clause in the first dependency encountered is copied into the handler.
 
