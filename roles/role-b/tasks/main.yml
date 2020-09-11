@@ -1,0 +1,6 @@
+---
+
+- name: role-b
+  command: echo role-b
+  notify: the-handler
+

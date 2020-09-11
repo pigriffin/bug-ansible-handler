@@ -1,0 +1,7 @@
+---
+
+- name: the-handler
+  debugger: on_skipped
+  command: echo the-handler
+
+
